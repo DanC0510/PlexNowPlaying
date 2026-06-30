@@ -5,7 +5,7 @@ import os
 import keyboard
 import json
 
-with open('creds.json') as data_file:
+with open('credentials.json') as data_file:
     data = json.load(data_file)
 
 PLEX_BASE = data['PLEX_BASE']
