@@ -81,3 +81,5 @@ while RUNNING == True:
     except Exception as e:
         print("Error:", e)
 
+
+clear_files()
