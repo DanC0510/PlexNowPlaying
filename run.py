@@ -3,9 +3,13 @@ import xml.etree.ElementTree as ET
 import time
 import os
 import keyboard
+import json
 
-PLEX_BASE = "http://YOUR_SERVER_IP_HERE:32400"
-TOKEN = "YOUR_TOKEN_HERE" # if you can't figure out how to get your token, then use this https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
+with open('creds.json') as data_file:
+    data = json.load(data_file)
+
+PLEX_BASE = data['PLEX_BASE']
+TOKEN = data['PLEX_TOKEN']
 
 TEXT_FILE = "nowplaying.txt"
 ART_FILE = "cover.jpg"
