@@ -2,12 +2,15 @@ import requests
 import xml.etree.ElementTree as ET
 import time
 import os
+import keyboard
 
 PLEX_BASE = "http://YOUR_SERVER_IP_HERE:32400"
 TOKEN = "YOUR_TOKEN_HERE" # if you can't figure out how to get your token, then use this https://support.plex.tv/articles/204059436-finding-an-authentication-token-x-plex-token/
 
 TEXT_FILE = "nowplaying.txt"
 ART_FILE = "cover.jpg"
+
+RUNNING = True
 
 LAST_ART_URL = None
 
@@ -21,8 +24,12 @@ def clear_files():
         except:
             pass
 
-while True:
-    try:
+while RUNNING == True:
+    if keyboard.is_pressed('e'):
+            RUNNING = False
+            continue
+            
+    try:        
         url = f"{PLEX_BASE}/status/sessions?X-Plex-Token={TOKEN}"
 
         response = requests.get(url, timeout=5)
@@ -74,4 +81,3 @@ while True:
     except Exception as e:
         print("Error:", e)
 
-    time.sleep(2)
