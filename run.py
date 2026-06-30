@@ -4,6 +4,7 @@ import time
 import os
 import keyboard
 import json
+import msvcrt
 
 with open('credentials.json') as data_file:
     data = json.load(data_file)
@@ -29,7 +30,10 @@ def clear_files():
             pass
 
 while RUNNING == True:
-    if keyboard.is_pressed('e'):
+    if msvcrt.kbhit():
+        key = msvcrt.getch()
+
+        if key.lower() == b'e':
             RUNNING = False
             continue
             
