@@ -50,8 +50,10 @@ while RUNNING == True:
             display_text = f"{song} - {artist}          "
 
             # Write text for OBS
-            with open(TEXT_FILE, "w", encoding="utf-8") as f:
-                f.write(display_text)
+            with open(TEXT_FILE, "r", encoding="utf-8") as r:
+                if r.read() != display_text:
+                    with open(TEXT_FILE, "w", encoding="utf-8") as f:
+                        f.write(display_text)
 
             print(display_text)
 
