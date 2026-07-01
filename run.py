@@ -6,7 +6,10 @@ import keyboard
 import json
 import msvcrt
 
-with open('credentials.json') as data_file:
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, "credentials.json")
+
+with open(file_path) as data_file:
     data = json.load(data_file)
 
 PLEX_BASE = data['PLEX_BASE']
